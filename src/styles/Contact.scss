@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Handjet:wght@400;500&family=Open+Sans:wght@400;500&family=Ruwudu&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.contact-main{
+    min-height: 80vh;
+    padding-top: 111px;
+    border: 1px solid black;
+    background-color: rgba(132, 221, 179, 0.5);
+    display: flex;
+    justify-content: center;
+}
+
+.input-items{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  background-color: rgb(248, 229, 86);
+  border-radius: 9px;
+  min-height: 30vh;
+  width: 80vw;
+  padding: 25px 20px;
+}
+
+.input-items input{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+}
+
+.form-main p{
+    text-align: center;
+    padding-top: 120px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+}
+
+.form-button {
+    text-align: center;
+}
+
+.form-button button {
+    padding: 10px 50px;
+    border-radius: 5px;
+    border: 2px solid rgb(6, 66, 38);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.4s ease-in;
+    color: rgb(6, 66, 38);
+}
+
+.form-button button:hover {
+    background-color: rgb(6, 66, 38);
+    color: white;
+}
