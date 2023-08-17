@@ -1,136 +1,97 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import axios from "axios"
 import "../styles/Blog.scss"
+import { useEffect } from 'react'
+import { server } from "../main"
+import toast from "react-hot-toast"
+import { useState } from 'react'
+
+
 
 const Blog = () => {
+
+  const [posts, setPosts] = useState([])
+
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const { data } = await axios.get(`${server}/post/all`, {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        withCredentials: true
+      })
+
+      setPosts(data.posts)
+
+      // console.log(data.posts[0].title)
+      console.log(posts)
+
+    };
+
+    getPosts()
+
+
+
+    // (async (e)=> {
+    //   e.preventDefault();
+
+    //   const {data} = await axios.get(`${server}/post/all`, {
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     withCredentials: true
+    //   })
+
+
+
+
+    // })
+
+    toast.success("success")
+
+
+  }, [])
+
+
+
   return (
     <div className="blog-main">
       <div className="blog-page-title">
         <p>Blogs</p>
       </div>
-      <div className="blogs">
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 1</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
+      {
+        posts.map(post => {
+          return (
+            <div className="card" key={post._id}>
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 2</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
+              <div className="blogs">
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 3</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
+                <div className="blog-card">
+                  <div className="blog-title">
+                    <h2>{post.title}</h2>
+                  </div>
+                  <div className="blog-desc">
+                    <p>{post.body.slice(0,50)+"....."} </p>
+                  </div>
+                  <div className="blog-button">
+                    <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
+                  </div>
+                </div>
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 4</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
+              </div>
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 5</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 6</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
+            </div>
+          )
+        })
+      }
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 7</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 8</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 9</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
 
-        <div className="blog-card">
-          <div className="blog-title">
-            <h2>Blog Title 10</h2>
-          </div>
-          <div className="blog-desc">
-            <p>Description Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis incidunt eos qui dolores id odio, atque cum et ut possimus deleniti perspiciatis iusto quasi sed? Consectetur provident totam unde repellat?</p>
-          </div>
-          <div className="blog-button">
-            <Link to={"/blog"} className="blog-link"><button>Read further</button></Link>
-          </div>
-        </div>
-
-      </div>
     </div>
   )
 }

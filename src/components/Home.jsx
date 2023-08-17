@@ -1,7 +1,6 @@
 import React from 'react'
 import "../styles/Home.scss"
 import image from "../assets/me.png"
-import Project from './Project'
 import { Link } from 'react-router-dom'
 
 
